@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter , HashRouter, Route , Redirect, Switch, StaticRouter} from 'react-router-dom';
 import Bundle from '../components/Bundle.js'
 import Home from '../components/Home.js'
-import Hello from 'bundle-loader?lazy&name=writer!../components/Hello.js';
+import Hello from 'bundle-loader?lazy&name=Hello!../components/Hello.js';
 import initialState from '../redux/store/data';
 
 const hello = (props) => (
@@ -10,7 +10,6 @@ const hello = (props) => (
     {(Component) => <Component {...props}/>}
   </Bundle>
 )
-
 
 let router = (
     <HashRouter context={initialState} basename='/'>

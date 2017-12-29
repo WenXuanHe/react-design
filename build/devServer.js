@@ -19,10 +19,12 @@ const runServer = function(host, port){
     // serve webpack bundle output
     var app = new webpackDevServer(compiler, {
         publicPath: config.output.publicPath,
-        publicPath: '/dist/',
-        contentBase: path.resolve(__dirname, '../', 'views'),
+        disableHostCheck: true,
+        clientLogLevel: 'none',
+        publicPath: "/dist/",
+        // contentBase: path.resolve(__dirname, '../', 'dist'),
         compress: true,
-        hotOnly: true,
+        hot: true,
         noInfo: true,
         watchOptions: {
             ignored: /node_modules/,
@@ -36,17 +38,14 @@ const runServer = function(host, port){
     // compilation error display
     app.use(WebpackHotMiddleware(compiler));
 
-    app.use(historyApiFallback());
+    // app.use(historyApiFallback());
 
     app.listen(port, host, function (err) {
         if (err) {
             console.log(err);
         }
 
-        console.log("PID:", process.pid);
-
-        openBrowser(`http://${host}:${port}/`);
-        
+        openBrowser(`http://${host}:${port}/dist/index.html`);
     });
 }
 

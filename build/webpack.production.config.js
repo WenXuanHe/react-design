@@ -8,7 +8,7 @@ baseConfig.plugins = baseConfig.plugins.concat([
         {
             sourceMap: true
         }
-    ),
+    ), 
    
 ]);
 

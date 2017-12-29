@@ -8,7 +8,12 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 let env = process.env.NODE_ENV.trim(); // 当前环境
 let version = require('../package.json')['version'];
-let hash = env === 'production';
+
+let hash = !!process.env.hash;
+const jsChunkFilename = hash ? "[name].[chunkhash:8]" : "[name]";
+const cssFileName = hash ? '[name].[contenthash:8]' : '[name]';
+const filename = hash ? "[name].[hash:8]" : "[name]";
+const vendorsName = hash ? 'vendors.[hash:5]' : 'vendors';
 
 let config = {
     entry: {
@@ -28,9 +33,9 @@ let config = {
     },
     output: {
         path: path.resolve(__dirname, '../', 'dist/'),
-        filename: `[name]${hash ? ".[hash:5]" : ""}.js`,
+        filename: `${filename}.js`,
         //配置按需加载[chunkhash:5]
-        chunkFilename: `[name]${hash ? ".[chunkhash:5]" : ""}.js`,
+        chunkFilename: `${jsChunkFilename}.js`,
         //给自动引用的生成文件加路径
         publicPath: '/dist/'
     },
@@ -95,15 +100,16 @@ let config = {
     resolve: {
         extensions: ['.js', '.jsx', '.css', '.scss', '.tsx', 'ts'],
         alias: {
-            $redux: path.resolve(__dirname, '../', 'public/src/redux'),
-            $apis: path.resolve(__dirname, '../', 'public/src/apis'),
-            $components: path.resolve(__dirname, '../', 'public/src/components'),
-            $routes: path.resolve(__dirname, '../', 'public/src/routes'),
-            $styles: path.resolve(__dirname, '../', 'public/src/styles'),
-            $helper: path.resolve(__dirname, '../', 'public/src/helper'),
-            $utils: path.resolve(__dirname, '../', 'public/src/utils'),
-            $actions: path.resolve(__dirname, '../', 'public/src/actions'),
-            $views: path.resolve(__dirname, '../', 'public/src/views'),
+            $redux: path.resolve(__dirname, '../', 'src/redux'),
+            $apis: path.resolve(__dirname, '../', 'src/apis'),
+            $http: path.resolve(__dirname, '../', 'src/http'),
+            $components: path.resolve(__dirname, '../', 'src/components'),
+            $routes: path.resolve(__dirname, '../', 'src/routes'),
+            $styles: path.resolve(__dirname, '../', 'src/styles'),
+            $helper: path.resolve(__dirname, '../', 'src/helper'),
+            $utils: path.resolve(__dirname, '../', 'src/utils'),
+            $actions: path.resolve(__dirname, '../', 'src/actions'),
+            $views: path.resolve(__dirname, '../', 'src/views'),
         }
     },
     plugins: [
@@ -122,18 +128,18 @@ let config = {
         // 提取公共文件
         new webpack.optimize.CommonsChunkPlugin({
             name: "vendors",
-            filename: `vendors${hash ? ".[hash:5]" : ""}.js`,
+            filename: `${vendorsName}.js`,
         }),
-        // html模板插件
+         // html模板插件
         new HtmlWebpackPlugin({
-            hash: false,
-            inject: false,
-            filename: path.resolve(__dirname, '../', 'views/index.html'), //最终生成的html文件
+            inject: true,
+            // filename: path.resolve(__dirname, '../', 'views/index.html'), //最终生成的html文件, 不配置默认添加到output配置的path下
             template: path.resolve(__dirname, '../', 'templates/index.html'),
             chunks: ['vendors', 'index'], //入口文件所依赖的js文件
         }),
+
         // 提取css
-        new ExtractTextPlugin(`styles/[name]${hash ? ".[chunkhash:5]" : ""}.css`),
+        new ExtractTextPlugin(`styles/${cssFileName}.css`),
         //  scope hoisting
         new webpack.optimize.ModuleConcatenationPlugin(),
         // 定义全局变量

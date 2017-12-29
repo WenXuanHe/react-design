@@ -5,7 +5,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node ./build/devServer.js",
     "analyze": "cross-env NODE_ENV=development analyze=resolve node ./build/devServer.js",
-    "build": "cross-env NODE_ENV=production webpack --color --config ./build/webpack.production.config.js",
+    "build": "cross-env NODE_ENV=production hash=true webpack --color --config ./build/webpack.production.config.js",
     "test": "karma start --single-run --browsers ChromeHeadless ./build/karma.conf.js"
   },
   "dependencies": {
