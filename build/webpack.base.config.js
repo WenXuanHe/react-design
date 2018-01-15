@@ -24,11 +24,9 @@ let config = {
             'react-redux',
             'react-router',
             'redux',
-            'redux-thunk',
-            'immutable',
-            'classnames',
-            'keymirror',
-            'react-router-dom'
+            'redux-saga',
+            'react-router-dom',
+            'react-router-redux'
         ]
     },
     output: {

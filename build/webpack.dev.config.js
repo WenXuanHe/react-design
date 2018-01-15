@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+const net = require('net');
 let baseConfig = require("./webpack.base.config");
 let devEnv = require('./dev');
 
@@ -23,6 +23,7 @@ baseConfig.plugins = baseConfig.plugins.concat([
 baseConfig.devtool = 'source-map';
 
 if(analyze === "resolve"){
+    
     baseConfig.plugins.push(
         new BundleAnalyzerPlugin({
             analyzerPort: devEnv.analyzePort
