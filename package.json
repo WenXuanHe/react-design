@@ -6,6 +6,7 @@
     "start": "cross-env NODE_ENV=development node ./build/devServer.js",
     "analyze": "cross-env NODE_ENV=development analyze=resolve webpack --color --config ./build/webpack.dev.config.js",
     "build": "cross-env NODE_ENV=production hash=true webpack --color --config ./build/webpack.production.config.js",
+    "stage": "cross-env NODE_ENV=production webpack --color --config ./build/webpack.stage.config.js",
     "test": "jest --color",
     "coverage": "jest --colors --coverage"
   },
@@ -83,6 +84,7 @@
     "node-sass": "^4.6.0",
     "nodemon": "^1.8.1",
     "nyan-progress-webpack-plugin": "^1.2.0",
+    "on-build-webpack": "^0.1.0",
     "open-browser-webpack-plugin": "^0.0.5",
     "postcss": "^6.0.1",
     "postcss-import": "^10.0.0",
@@ -110,7 +112,6 @@
   "eslintIgnore": [
     "dist/*",
     "build/*",
-    ".travis/*",
     "test/*",
     "backstop_data/*"
   ],

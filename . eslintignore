@@ -1,5 +1,4 @@
 dist/*
 build/*
-.travis/*
 test/*
 backstop_data/*
