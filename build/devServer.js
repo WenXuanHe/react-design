@@ -1,27 +1,27 @@
-const webpack = require('webpack')
-const path = require('path')
+const webpack = require('webpack');
+const path = require('path');
 const openBrowser = require('react-dev-utils/openBrowser');
 const choosePort = require('react-dev-utils/WebpackDevServerUtils').choosePort;
-const WebpackHotMiddleware = require('webpack-hot-middleware')
-const webpackDevServer = require("webpack-dev-server");
+const WebpackHotMiddleware = require('webpack-hot-middleware');
+const webpackDevServer = require('webpack-dev-server');
 const historyApiFallback = require('connect-history-api-fallback');
 
-let config = require('./webpack.dev.config.js')
+let config = require('./webpack.dev.config.js');
 let devEnv = require('./dev');
 let baseEnv = require('./base');
 let compiler = webpack(config);
 
-const HOST = process.env.HOST || "localhost";
+const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || devEnv.browserPort;
 
-const runServer = function(host, port){
+const runServer = function(host, port) {
 
     // serve webpack bundle output
-    var app = new webpackDevServer(compiler, {
+    let app = new webpackDevServer(compiler, {
         publicPath: config.output.publicPath,
         disableHostCheck: true,
         clientLogLevel: 'none',
-        publicPath: "/dist/",
+        publicPath: '/dist/',
         // contentBase: path.resolve(__dirname, '../', 'dist'),
         compress: true,
         hot: true,
@@ -47,16 +47,16 @@ const runServer = function(host, port){
 
         openBrowser(`http://${host}:${port}/dist/index.html`);
     });
-}
+};
 
 
 choosePort(HOST, PORT).then((port) => {
     if (port === null) {
-      return;
+        return;
     }
     try {
         runServer(HOST, port);
     } catch (e) {
-      console.log(e);
+        console.log(e);
     }
 });

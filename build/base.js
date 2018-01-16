@@ -1,5 +1,5 @@
 module.exports = {
-    proxy:{
-        
+    proxy: {
+
     }
-}
+};

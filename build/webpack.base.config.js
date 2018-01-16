@@ -34,6 +34,7 @@ let config = {
         chunkFilename: `${jsChunkFilename}.js`,
         // 给自动引用的生成文件加路径
         publicPath: '/dist/'
+
     },
     module: {
         rules: [{

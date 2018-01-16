@@ -102,5 +102,6 @@
     "webpack-dev-server": "^2.7.1",
     "webpack-hot-middleware": "^2.21.0",
     "webpack-isomorphic": "^1.4.1"
-  }
+  },
+  "eslintIgnore": ["dist/*", "build/*"]
 }

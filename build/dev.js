@@ -1,4 +1,4 @@
 module.exports = {
-    "browserPort": 9390,
-    "analyzePort": 4450
-}
+    'browserPort': 9390,
+    'analyzePort': 4450
+};
