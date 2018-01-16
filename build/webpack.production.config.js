@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 
-let baseConfig = require("./webpack.base.config");
+let baseConfig = require('./webpack.base.config');
 
 baseConfig.plugins = baseConfig.plugins.concat([
     // 压缩配置
@@ -8,8 +8,8 @@ baseConfig.plugins = baseConfig.plugins.concat([
         {
             sourceMap: true
         }
-    ), 
-   
+    )
+
 ]);
 
 module.exports = baseConfig;

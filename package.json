@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development node ./build/devServer.js",
-    "analyze": "cross-env NODE_ENV=development analyze=resolve node ./build/devServer.js",
+    "analyze": "cross-env NODE_ENV=development analyze=resolve webpack --color --config ./build/webpack.dev.config.js",
     "build": "cross-env NODE_ENV=production hash=true webpack --color --config ./build/webpack.production.config.js",
     "test": "karma start --single-run --browsers ChromeHeadless ./build/karma.conf.js"
   },
@@ -15,14 +15,11 @@
     "history": "^4.7.2",
     "invariant": "^2.2.2",
     "lodash": "^4.17.4",
-    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
-    "react-router-redux": "^4.0.8",
-    "redux": "^3.6.0",
-    "redux-saga": "^0.16.0"
+    "react-router-redux": "^4.0.8"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
