@@ -1,17 +1,13 @@
 
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Link  } from 'react-router-dom';
 
-class Home extends React.Component {
+class Home extends Component {
 
-    constructor(){
-        super(...arguments);
-    }
-
-    componentDidMount(){
+    componentDidMount() {
         this.props.dispatch({
-            type:"queryCount"
+            type: 'queryCount'
         });
     }
 
@@ -25,13 +21,13 @@ class Home extends React.Component {
                     <div><Link to="/hello">hello </Link></div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
 export default connect((state, ownProps) => {
-    console.log("state", state);
+    console.log('state', state);
     return {
         text: state.home.text
-    }
+    };
 })(Home);

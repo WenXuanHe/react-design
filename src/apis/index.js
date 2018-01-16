@@ -1,4 +1,4 @@
-import http from '$http';
+// import http from '$http';
 
 export const getCount = () => {
     return new Promise((resolve, reject) => {
@@ -7,8 +7,8 @@ export const getCount = () => {
                 count: 100
             });
         }, 1000);
-    })
-}
+    });
+};
 
 export const increaseCount = (count) => {
     return new Promise((resolve, reject) => {
@@ -18,8 +18,8 @@ export const increaseCount = (count) => {
                 count: count
             });
         }, 1000);
-    })
-}
+    });
+};
 
 export const encreaseCount = (count) => {
     return new Promise((resolve, reject) => {
@@ -29,11 +29,11 @@ export const encreaseCount = (count) => {
                 count: count
             });
         }, 1000);
-    })
-}
+    });
+};
 
 export default{
     getCount,
     increaseCount,
     encreaseCount
-}
+};

@@ -4,4 +4,4 @@ import home from './home';
 export default [
     hello,
     home
-]
+];

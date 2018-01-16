@@ -1,25 +1,21 @@
 
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import { Link  } from 'react-router-dom';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Hello extends React.Component {
 
-    constructor(){
-        super(...arguments);
+    componentDidMount() {
+        this.props.dispatch({
+            type: 'hello/queryCount'
+        }).then(function() {
+            console.log('arguments:', arguments);
+        });
     }
 
-    componentDidMount(){
-        this.props.dispatch({
-            type:"hello/queryCount"
-        }).then(function(){
-            console.log("arguments:",arguments);
-        })
-    }
-    
     render() {
-        let { text} = this.props;
-        
+        let { text } = this.props;
+
         return (
             <div className="">
                 <div>{text} </div>
@@ -27,13 +23,13 @@ class Hello extends React.Component {
                     <div><Link to="index">home</Link></div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
 export default connect((state, ownProps) => {
-    console.log("state", state);
+    console.log('state', state);
     return {
         text: state.hello.text,
-    }
-})(Hello)
+    };
+})(Hello);

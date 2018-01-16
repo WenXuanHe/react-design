@@ -1,30 +1,30 @@
 export default {
-    
-      namespace: 'home',
-    
-      state: {
-        text:"home"
-      },
-    
-      subscriptions: {
+
+    namespace: 'home',
+
+    state: {
+        text: 'home'
+    },
+
+    subscriptions: {
         setup({ dispatch, history }) {  // eslint-disable-line
-          history.listen((location) => {
-            console.log(1, location);
-          });
+            history.listen((location) => {
+                console.log(1, location);
+            });
         },
-      },
-    
-      effects: {
+    },
+
+    effects: {
         *queryCount({ payload }, { call, put }) {  // eslint-disable-line
-          alert("home");
-          yield put({ type: 'save' });
+            alert('home');
+            yield put({ type: 'save' });
         },
-      },
-    
-      reducers: {
+    },
+
+    reducers: {
         save(state, action) {
-          return { ...state, ...action.payload };
+            return { ...state, ...action.payload };
         },
-      },
-    
-    };
+    },
+
+};

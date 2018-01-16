@@ -8,12 +8,12 @@ const app = dva();
 // app.use({});
 
 // 3. Model
-if(Object.prototype.toString.call(models) === "[object Array]"){
+if (Object.prototype.toString.call(models) === '[object Array]') {
     models.forEach(model => {
         app.model(model);
-    })
-}else{
-    throw new Error("models must be array");
+    });
+} else {
+    throw new Error('models must be array');
 }
 
 // 4. Router
