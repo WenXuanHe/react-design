@@ -41,16 +41,16 @@ let config = {
             test: /\.js[x]?$/,
             use: [{
                 loader: 'babel-loader',
-                options: {
-                    presets: [
-                        ['es2015', {
-                            'modules': false  //  允许tree shaking
-                        }],
-                        'stage-0',
-                        'react'
-                    ],
-                    plugins: ['transform-runtime', 'transform-decorators-legacy']
-                }
+                // options: {
+                //     presets: [
+                //         ['es2015', {
+                //             'modules': false  //  允许tree shaking
+                //         }],
+                //         'stage-0',
+                //         'react'
+                //     ],
+                //     plugins: ['transform-runtime', 'transform-decorators-legacy']
+                // }
             }],
             include: [path.resolve(__dirname, '../', 'src')],
             exclude: /(node_modules|bower_components)/

@@ -6,7 +6,8 @@
     "start": "cross-env NODE_ENV=development node ./build/devServer.js",
     "analyze": "cross-env NODE_ENV=development analyze=resolve webpack --color --config ./build/webpack.dev.config.js",
     "build": "cross-env NODE_ENV=production hash=true webpack --color --config ./build/webpack.production.config.js",
-    "test": "karma start --single-run --browsers ChromeHeadless ./build/karma.conf.js"
+    "test": "jest --color",
+    "coverage": "jest --colors --coverage"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -24,6 +25,8 @@
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.24.1",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.1.0",
     "babel-loader": "^7.0.0",
     "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -60,6 +63,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "html-webpack-plugin": "^2.30.1",
     "jasmine": "^2.7.0",
+    "jest": "^22.1.1",
     "json-loader": "^0.5.7",
     "karma": "^1.7.0",
     "karma-chai": "^0.1.0",
@@ -103,5 +107,24 @@
     "webpack-hot-middleware": "^2.21.0",
     "webpack-isomorphic": "^1.4.1"
   },
-  "eslintIgnore": ["dist/*", "build/*", ".travis/*", "test/*", "backstop_data/*"]
+  "eslintIgnore": [
+    "dist/*",
+    "build/*",
+    ".travis/*",
+    "test/*",
+    "backstop_data/*"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      ".*\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  }
 }
